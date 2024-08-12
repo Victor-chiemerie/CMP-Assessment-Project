@@ -3,6 +3,9 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_app/utilities/menuItemContainer.dart';
 
+import '../utilities/adsContainer.dart';
+import '../utilities/menuBoxContainer.dart';
+
 class MyMobileView extends StatefulWidget {
   final double screenSize;
   const MyMobileView({
@@ -101,12 +104,16 @@ class _MyMobileViewState extends State<MyMobileView> {
                 height: 140,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    adContainer(),
-                    const SizedBox(width: 10),
-                    adContainer(),
-                    const SizedBox(width: 10),
-                    adContainer(),
+                  children: const [
+                    AdsContainer(
+                      containerWidth: 325,
+                      textBoxWidth: 160,
+                    ),
+                    SizedBox(width: 10),
+                    AdsContainer(
+                      containerWidth: 325,
+                      textBoxWidth: 160,
+                    ),
                   ],
                 ),
               ),
@@ -595,23 +602,23 @@ class _MyMobileViewState extends State<MyMobileView> {
                 height: 120,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    mealBoxContainer(
-                      const Color.fromRGBO(237, 144, 189, 1),
-                      "assets/images/3_box_item.png",
-                      3,
+                  children: const [
+                    MenuBoxContainer(
+                      backGroundColor: Color.fromRGBO(237, 144, 189, 1),
+                      imagePath: "assets/images/3_box_item.png",
+                      boxNumber: 3,
                     ),
-                    const SizedBox(width: 8),
-                    mealBoxContainer(
-                      const Color.fromRGBO(215, 195, 233, 1),
-                      "assets/images/5_box_item.png",
-                      5,
+                    SizedBox(width: 8),
+                    MenuBoxContainer(
+                      backGroundColor: Color.fromRGBO(215, 195, 233, 1),
+                      imagePath: "assets/images/5_box_item.png",
+                      boxNumber: 5,
                     ),
-                    const SizedBox(width: 8),
-                    mealBoxContainer(
-                      const Color.fromRGBO(245, 222, 181, 1),
-                      "assets/images/8_box_item.png",
-                      8,
+                    SizedBox(width: 8),
+                    MenuBoxContainer(
+                      backGroundColor: Color.fromRGBO(245, 222, 181, 1),
+                      imagePath: "assets/images/8_box_item.png",
+                      boxNumber: 8,
                     ),
                   ],
                 ),
@@ -852,82 +859,6 @@ class _MyMobileViewState extends State<MyMobileView> {
     );
   }
 
-  /// Ad container
-  Widget adContainer() {
-    return Container(
-      height: 140,
-      width: 325,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromARGB(255, 70, 8, 133),
-            MyColors.myPurple,
-          ],
-          stops: [0.70, 0.30],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: SizedBox(
-              width: 160,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Enjoy your first order, the taste of our delicious food!",
-                    style: TextStyle(
-                      color: MyColors.myWhite,
-                      fontSize: 16.5,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 7),
-                  DottedBorder(
-                    color: const Color(0xFFF6D798),
-                    strokeWidth: 0.5,
-                    dashPattern: const [
-                      10,
-                      4
-                    ], // Adjust dash and space lengths as needed
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 12,
-                      ),
-                      child: const Text(
-                        "FIRSTPLATE01",
-                        style: TextStyle(
-                          color: Color(0xFFF6D798),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: double.infinity,
-            width: 140,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("images/elephant.png"),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   /// Delivery menu item
   Widget seeAllMenuItem(List<Color> backGroundColor, Color color) {
     return Container(
@@ -961,66 +892,6 @@ class _MyMobileViewState extends State<MyMobileView> {
             style: TextStyle(
               color: color,
               fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Meal box container
-  Widget mealBoxContainer(
-    Color backGroundColor,
-    String imagePath,
-    boxNumber,
-  ) {
-    return Container(
-      height: 120,
-      width: 175,
-      decoration: BoxDecoration(
-        color: backGroundColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Stack(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(left: 20),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-                width: 400,
-                height: 400,
-                alignment: Alignment.centerLeft,
-              ),
-            ),
-          ),
-          Positioned(
-            left: 0,
-            bottom: 18,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 2,
-              ),
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color.fromRGBO(43, 13, 73, 1),
-                    Color.fromRGBO(118, 20, 217, 1),
-                  ],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
-              ),
-              child: Text(
-                '$boxNumber Items Box',
-                style: const TextStyle(
-                  color: MyColors.myWhite,
-                  fontSize: 12,
-                ),
-              ),
             ),
           ),
         ],

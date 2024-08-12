@@ -1,6 +1,8 @@
 import 'package:delivery_app/utilities/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../utilities/adsContainer.dart';
+import '../utilities/menuBoxContainer.dart';
 import '../utilities/menuItemContainer.dart';
 
 class MyDesktopView extends StatefulWidget {
@@ -27,11 +29,12 @@ class _MyDesktopViewState extends State<MyDesktopView> {
             vertical: 10,
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // side navigation bar
               SizedBox(
                 height: double.infinity,
-                width: screenWidth * 0.21,
+                width: screenWidth * 0.19,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -176,411 +179,748 @@ class _MyDesktopViewState extends State<MyDesktopView> {
                     borderRadius: BorderRadius.circular(12),
                     color: MyColors.myWhite,
                   ),
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                            child: Text(
+                              "Hi, Monica!",
+                              style: TextStyle(
+                                color: MyColors.myPurple,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          // Start crafting
+                          const Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Start Crafting",
+                                style: TextStyle(
+                                  color: MyColors.myBlack,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Expanded(
+                                child: Divider(
+                                  color: Color.fromARGB(255, 209, 207, 207),
+                                  thickness: 0.4,
+                                  indent: 5.0,
+                                  endIndent: 5.0,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // delivery box
+                              Container(
+                                height: 150,
+                                width: screenWidth * 0.25,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      Color.fromRGBO(247, 243, 226, 1),
+                                      Color.fromRGBO(245, 222, 181, 1),
+                                      Color.fromRGBO(247, 243, 226, 1),
+                                    ],
+                                  ),
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Delivery Box",
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.person,
+                                                    size: 12.5,
+                                                    color: Color.fromRGBO(
+                                                        147, 90, 16, 1),
+                                                  ),
+                                                  SizedBox(width: 4),
+                                                  Text(
+                                                    "Min 10 - Max 120",
+                                                    style: TextStyle(
+                                                      color: Color.fromRGBO(
+                                                          147, 90, 16, 1),
+                                                      fontSize: 12.5,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          TextButton.icon(
+                                            iconAlignment: IconAlignment.end,
+                                            onPressed: () {},
+                                            label: const Text("See All"),
+                                            icon: const Icon(
+                                              Icons.arrow_forward,
+                                              size: 16,
+                                            ),
+                                            style: TextButton.styleFrom(
+                                              backgroundColor:
+                                                  const Color.fromRGBO(
+                                                      221, 142, 24, 1),
+                                              foregroundColor: MyColors.myWhite,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Image.asset(
+                                        "assets/images/delivery_box.png",
+                                        fit: BoxFit.cover,
+                                        alignment: Alignment.topLeft,
+                                        width: 250,
+                                        height: 150,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              const SizedBox(width: 9),
+
+                              // meal boxes
+                              Container(
+                                height: 150,
+                                width: screenWidth * 0.128,
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color.fromRGBO(245, 239, 250, 1),
+                                      Color.fromRGBO(215, 195, 233, 1),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Meal Boxes",
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              SizedBox(height: 1),
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.person,
+                                                    color: MyColors.myPurple,
+                                                    size: 12.5,
+                                                  ),
+                                                  SizedBox(width: 4),
+                                                  Text(
+                                                    "Min 10 Guests",
+                                                    style: TextStyle(
+                                                      color: MyColors.myPurple,
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              // Input function here
+                                            },
+                                            icon: const Icon(
+                                              Icons.arrow_circle_right_sharp,
+                                              color: MyColors.myPurple,
+                                              size: 27,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                          bottom: Radius.circular(20),
+                                        ),
+                                        child: Image.asset(
+                                          "assets/images/meal_boxes.png",
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.topCenter,
+                                          width: 250,
+                                          height: 200,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              const SizedBox(width: 9),
+
+                              // catering
+                              Container(
+                                height: 150,
+                                width: screenWidth * 0.128,
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color.fromRGBO(248, 211, 229, 1),
+                                      Color.fromRGBO(237, 144, 189, 1),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Catering",
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              SizedBox(height: 1),
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.person,
+                                                    color: Color.fromRGBO(
+                                                        231, 4, 114, 1),
+                                                    size: 12.5,
+                                                  ),
+                                                  SizedBox(width: 4),
+                                                  Text(
+                                                    "Min 120 Guests",
+                                                    style: TextStyle(
+                                                      color: Color.fromRGBO(
+                                                          231, 4, 114, 1),
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              // Input function here
+                                            },
+                                            icon: const Icon(
+                                              Icons.arrow_circle_right_sharp,
+                                              color: Color.fromRGBO(
+                                                  231, 4, 114, 1),
+                                              size: 27,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                          bottom: Radius.circular(20),
+                                        ),
+                                        child: Image.asset(
+                                          "assets/images/catering.png",
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.topCenter,
+                                          width: 250,
+                                          height: 200,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          // Choose your platter
+                          const Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Choose Your Platter",
+                                style: TextStyle(
+                                  color: MyColors.myBlack,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Expanded(
+                                child: Divider(
+                                  color: Color.fromARGB(255, 209, 207, 207),
+                                  thickness: 0.4,
+                                  indent: 5.0,
+                                  endIndent: 5.0,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          // delivery box
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Delivery Box",
+                                        style: TextStyle(
+                                          color: MyColors.myPurple,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "(",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: MyColors.myGrey,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.person,
+                                        size: 13,
+                                        color: MyColors.myGrey,
+                                      ),
+                                      Text(
+                                        "Min 10 - Max 50)",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: MyColors.myGrey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 1),
+                                  Text(
+                                    "Best for small gatherings and house parties",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color.fromARGB(255, 197, 196, 196),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  // input function here...
+                                },
+                                style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.all(0),
+                                ),
+                                child: const Text(
+                                  "More",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: MyColors.myBlack,
+                                  ),
+                                ),
+                              ),
+
+                              // See all
+                              TextButton.icon(
+                                iconAlignment: IconAlignment.end,
+                                onPressed: () {
+                                  // input function here...
+                                },
+                                label: const Text(
+                                  "See All",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(233, 29, 128, 1),
+                                  ),
+                                ),
+                                icon: const Icon(
+                                  Icons.arrow_circle_right,
+                                  size: 24,
+                                  color: Color.fromRGBO(233, 29, 128, 1),
+                                ),
+                                style: TextButton.styleFrom(
+                                  elevation: 2,
+                                  padding: const EdgeInsets.all(5),
+                                  shape: BeveledRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  backgroundColor: const Color.fromRGBO(
+                                    255,
+                                    245,
+                                    250,
+                                    1,
+                                  ),
+                                  foregroundColor: MyColors.myWhite,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          SizedBox(
+                            height: 335,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: const [
+                                Menuitemcontainer(categories: 6, items: 9),
+                                SizedBox(width: 10),
+                                Menuitemcontainer(categories: 12, items: 40),
+                                SizedBox(width: 10),
+                                Menuitemcontainer(categories: 12, items: 40),
+                                SizedBox(width: 10),
+                              ],
+                            ),
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          // category menus
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Catering Menus",
+                                        style: TextStyle(
+                                          color: MyColors.myPurple,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "(",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: MyColors.myGrey,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.person,
+                                        size: 13,
+                                        color: MyColors.myGrey,
+                                      ),
+                                      Text(
+                                        "Min 200)",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: MyColors.myGrey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 1),
+                                  Text(
+                                    "Best for weddings, Corporate Events, Birthdays etc",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color.fromARGB(255, 197, 196, 196),
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              // See all
+                              TextButton.icon(
+                                iconAlignment: IconAlignment.end,
+                                onPressed: () {
+                                  // input function here...
+                                },
+                                label: const Text(
+                                  "See All",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(225, 153, 44, 1),
+                                  ),
+                                ),
+                                icon: const Icon(
+                                  Icons.arrow_circle_right,
+                                  size: 24,
+                                  color: Color.fromRGBO(225, 153, 44, 1),
+                                ),
+                                style: TextButton.styleFrom(
+                                  elevation: 2,
+                                  padding: const EdgeInsets.all(5),
+                                  shape: BeveledRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  backgroundColor: const Color.fromRGBO(
+                                    254,
+                                    248,
+                                    236,
+                                    1,
+                                  ),
+                                  foregroundColor: MyColors.myWhite,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          SizedBox(
+                            height: 335,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: const [
+                                Menuitemcontainer(categories: 12, items: 40),
+                                SizedBox(width: 10),
+                                Menuitemcontainer(categories: 12, items: 40),
+                                SizedBox(width: 10),
+                                Menuitemcontainer(categories: 12, items: 40),
+                                SizedBox(width: 10),
+                              ],
+                            ),
+                          ),
+
+                          const SizedBox(height: 50),
+
+                          // bottom divider
+                          const Row(
+                            children: [
+                              Expanded(
+                                child: Divider(
+                                  color: Color.fromARGB(255, 209, 207, 207),
+                                  thickness: 0.4,
+                                  indent: 30,
+                                  endIndent: 5.0,
+                                ),
+                              ),
+                              Text(
+                                "  You Customize, We Cater!  ",
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: Color.fromARGB(255, 197, 196, 196),
+                                ),
+                              ),
+                              Expanded(
+                                child: Divider(
+                                  color: Color.fromARGB(255, 209, 207, 207),
+                                  thickness: 0.4,
+                                  indent: 5.0,
+                                  endIndent: 30,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 60),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(width: 10),
+
+              // Ads and menu box section
+              SizedBox(
+                height: double.infinity,
+                width: screenWidth * 0.20,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: MyColors.myWhite,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 204, 204, 204),
+                        offset: Offset(1, 2),
+                        blurRadius: 2,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
                   child: Padding(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                          child: Text(
-                            "Hi, Monica!",
-                            style: TextStyle(
-                              color: MyColors.myPurple,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 24,
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(
-                            parent: AlwaysScrollableScrollPhysics(),
-                          ),
+                        // user's current location
+                        const Align(
+                          alignment: Alignment.topCenter,
                           child: Column(
-                            children: [],
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Current location",
+                                style: TextStyle(
+                                  color: MyColors.myGrey,
+                                  fontSize: 13,
+                                ),
+                              ),
+                              SizedBox(height: 1),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.location_on_outlined,
+                                    color: MyColors.myPurple,
+                                    size: 22,
+                                  ),
+                                  Text(
+                                    "Hyderabad",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.keyboard_arrow_down_outlined,
+                                    color: Color.fromARGB(255, 199, 196, 196),
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
 
-                        // Start crafting
-                        const Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Start Crafting",
-                              style: TextStyle(
-                                color: MyColors.myBlack,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Expanded(
-                              child: Divider(
-                                color: Color.fromARGB(255, 209, 207, 207),
-                                thickness: 0.4,
-                                indent: 5.0,
-                                endIndent: 5.0,
-                              ),
-                            ),
-                          ],
-                        ),
-
                         const SizedBox(height: 20),
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // delivery box
-                            Container(
-                              height: 150,
-                              width: screenWidth * 0.25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color.fromRGBO(247, 243, 226, 1),
-                                    Color.fromRGBO(245, 222, 181, 1),
-                                    Color.fromRGBO(247, 243, 226, 1),
-                                  ],
-                                ),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Delivery Box",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            SizedBox(height: 5),
-                                            Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.person,
-                                                  size: 12.5,
-                                                  color: Color.fromRGBO(
-                                                      147, 90, 16, 1),
-                                                ),
-                                                SizedBox(width: 4),
-                                                Text(
-                                                  "Min 10 - Max 120",
-                                                  style: TextStyle(
-                                                    color: Color.fromRGBO(
-                                                        147, 90, 16, 1),
-                                                    fontSize: 12.5,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        TextButton.icon(
-                                          iconAlignment: IconAlignment.end,
-                                          onPressed: () {},
-                                          label: const Text("See All"),
-                                          icon: const Icon(
-                                            Icons.arrow_forward,
-                                            size: 16,
-                                          ),
-                                          style: TextButton.styleFrom(
-                                            backgroundColor:
-                                                const Color.fromRGBO(
-                                                    221, 142, 24, 1),
-                                            foregroundColor: MyColors.myWhite,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Image.asset(
-                                      "assets/images/delivery_box.png",
-                                      fit: BoxFit.cover,
-                                      alignment: Alignment.topLeft,
-                                      width: 250,
-                                      height: 150,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            const SizedBox(width: 9),
-
-                            // meal boxes
-                            Container(
-                              height: 150,
-                              width: screenWidth * 0.128,
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color.fromRGBO(245, 239, 250, 1),
-                                    Color.fromRGBO(215, 195, 233, 1),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Meal Boxes",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            SizedBox(height: 1),
-                                            Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.person,
-                                                  color: MyColors.myPurple,
-                                                  size: 12.5,
-                                                ),
-                                                SizedBox(width: 4),
-                                                Text(
-                                                  "Min 10 Guests",
-                                                  style: TextStyle(
-                                                    color: MyColors.myPurple,
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            // Input function here
-                                          },
-                                          icon: const Icon(
-                                            Icons.arrow_circle_right_sharp,
-                                            color: MyColors.myPurple,
-                                            size: 27,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        bottom: Radius.circular(20),
-                                      ),
-                                      child: Image.asset(
-                                        "assets/images/meal_boxes.png",
-                                        fit: BoxFit.cover,
-                                        alignment: Alignment.topCenter,
-                                        width: 250,
-                                        height: 200,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            const SizedBox(width: 9),
-
-                            // catering
-                            Container(
-                              height: 150,
-                              width: screenWidth * 0.128,
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color.fromRGBO(248, 211, 229, 1),
-                                    Color.fromRGBO(237, 144, 189, 1),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Catering",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            SizedBox(height: 1),
-                                            Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.person,
-                                                  color: Color.fromRGBO(
-                                                      231, 4, 114, 1),
-                                                  size: 12.5,
-                                                ),
-                                                SizedBox(width: 4),
-                                                Text(
-                                                  "Min 120 Guests",
-                                                  style: TextStyle(
-                                                    color: Color.fromRGBO(
-                                                        231, 4, 114, 1),
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            // Input function here
-                                          },
-                                          icon: const Icon(
-                                            Icons.arrow_circle_right_sharp,
-                                            color:
-                                                Color.fromRGBO(231, 4, 114, 1),
-                                            size: 27,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        bottom: Radius.circular(20),
-                                      ),
-                                      child: Image.asset(
-                                        "assets/images/catering.png",
-                                        fit: BoxFit.cover,
-                                        alignment: Alignment.topCenter,
-                                        width: 250,
-                                        height: 200,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        // Choose your platter
-                        const Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Choose Your Platter",
-                              style: TextStyle(
-                                color: MyColors.myBlack,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Expanded(
-                              child: Divider(
-                                color: Color.fromARGB(255, 209, 207, 207),
-                                thickness: 0.4,
-                                indent: 5.0,
-                                endIndent: 5.0,
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        // delivery box
+                        // meal box
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Delivery Box",
-                                      style: TextStyle(
-                                        color: MyColors.myPurple,
-                                        fontWeight: FontWeight.w500,
+                            SizedBox(
+                              width: screenWidth * 0.12,
+                              child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Meal Box",
+                                        style: TextStyle(
+                                          color: MyColors.myPurple,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      "(",
-                                      style: TextStyle(
-                                        fontSize: 13,
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "(",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: MyColors.myGrey,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.person,
+                                        size: 13,
                                         color: MyColors.myGrey,
                                       ),
-                                    ),
-                                    Icon(
-                                      Icons.person,
-                                      size: 13,
-                                      color: MyColors.myGrey,
-                                    ),
-                                    Text(
-                                      "Min 10 - Max 50)",
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        color: MyColors.myGrey,
+                                      Text(
+                                        "Min 10)",
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: MyColors.myGrey,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 1),
-                                Text(
-                                  "Best for small gatherings and house parties",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color.fromARGB(255, 197, 196, 196),
+                                    ],
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: 1),
+                                  Text(
+                                    "Individually packed meal boxes of happiness!",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: Color.fromARGB(255, 197, 196, 196),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             TextButton(
                               onPressed: () {
@@ -598,106 +938,59 @@ class _MyDesktopViewState extends State<MyDesktopView> {
                                 ),
                               ),
                             ),
-
-                            // See all
-                            TextButton.icon(
-                              iconAlignment: IconAlignment.end,
-                              onPressed: () {
-                                // input function here...
-                              },
-                              label: const Text(
-                                "See All",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(233, 29, 128, 1),
-                                ),
-                              ),
-                              icon: const Icon(
-                                Icons.arrow_circle_right,
-                                size: 24,
-                                color: Color.fromRGBO(233, 29, 128, 1),
-                              ),
-                              style: TextButton.styleFrom(
-                                elevation: 2,
-                                padding: const EdgeInsets.all(5),
-                                shape: BeveledRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                backgroundColor: const Color.fromRGBO(
-                                  255,
-                                  245,
-                                  250,
-                                  1,
-                                ),
-                                foregroundColor: MyColors.myWhite,
-                              ),
-                            ),
                           ],
                         ),
 
                         const SizedBox(height: 20),
 
                         SizedBox(
-                          height: 335,
+                          width: double.infinity,
+                          height: screenHeight * 0.4,
                           child: ListView(
-                            scrollDirection: Axis.horizontal,
                             children: const [
-                              Menuitemcontainer(categories: 6, items: 9),
-                              SizedBox(width: 10),
-                              Menuitemcontainer(categories: 12, items: 40),
-                              SizedBox(width: 10),
-                              Menuitemcontainer(categories: 12, items: 40),
-                              SizedBox(width: 10),
+                              MenuBoxContainer(
+                                backGroundColor:
+                                    Color.fromRGBO(237, 144, 189, 1),
+                                imagePath: "assets/images/3_box_item.png",
+                                boxNumber: 3,
+                              ),
+                              SizedBox(height: 8),
+                              MenuBoxContainer(
+                                backGroundColor:
+                                    Color.fromRGBO(215, 195, 233, 1),
+                                imagePath: "assets/images/5_box_item.png",
+                                boxNumber: 5,
+                              ),
+                              SizedBox(height: 8),
+                              MenuBoxContainer(
+                                backGroundColor:
+                                    Color.fromRGBO(245, 222, 181, 1),
+                                imagePath: "assets/images/8_box_item.png",
+                                boxNumber: 8,
+                              ),
                             ],
                           ),
                         ),
 
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 30),
 
-                        // category menus
-                        const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Catering Menus",
-                                  style: TextStyle(
-                                    color: MyColors.myPurple,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  "(",
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: MyColors.myGrey,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.person,
-                                  size: 13,
-                                  color: MyColors.myGrey,
-                                ),
-                                Text(
-                                  "Min 200)",
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: MyColors.myGrey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 1),
-                            Text(
-                              "Best for weddings, Corporate Events, Birthdays etc",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Color.fromARGB(255, 197, 196, 196),
+                        // Top ad Section
+                        Expanded(
+                          child: ListView(
+                            children: [
+                              AdsContainer(
+                                containerWidth: double.infinity,
+                                textBoxWidth: screenWidth * 0.09,
+                                imageWidth: screenWidth * 0.08,
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 10),
+                              AdsContainer(
+                                containerWidth: double.infinity,
+                                textBoxWidth: screenWidth * 0.09,
+                                imageWidth: screenWidth * 0.08,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
