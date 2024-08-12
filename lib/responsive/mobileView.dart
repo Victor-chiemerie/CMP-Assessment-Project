@@ -1,7 +1,7 @@
 import 'package:delivery_app/utilities/colors.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:delivery_app/utilities/menuItemContainer.dart';
 
 class MyMobileView extends StatefulWidget {
   final double screenSize;
@@ -15,12 +15,11 @@ class MyMobileView extends StatefulWidget {
 }
 
 class _MyMobileViewState extends State<MyMobileView> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     List<Widget> body = [
       const Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -502,11 +501,11 @@ class _MyMobileViewState extends State<MyMobileView> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    menuItem(6, 9),
+                    const Menuitemcontainer(categories: 6, items: 9),
                     const SizedBox(width: 10),
-                    menuItem(12, 40),
+                    const Menuitemcontainer(categories: 12, items: 40),
                     const SizedBox(width: 10),
-                    menuItem(12, 40),
+                    const Menuitemcontainer(categories: 12, items: 40),
                     const SizedBox(width: 10),
                     seeAllMenuItem(
                       [
@@ -674,11 +673,11 @@ class _MyMobileViewState extends State<MyMobileView> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    menuItem(12, 40),
+                    const Menuitemcontainer(categories: 12, items: 40),
                     const SizedBox(width: 10),
-                    menuItem(12, 40),
+                    const Menuitemcontainer(categories: 12, items: 40),
                     const SizedBox(width: 10),
-                    menuItem(12, 40),
+                    const Menuitemcontainer(categories: 12, items: 40),
                     const SizedBox(width: 10),
                     seeAllMenuItem(
                       [
@@ -922,249 +921,6 @@ class _MyMobileViewState extends State<MyMobileView> {
                 image: AssetImage("images/elephant.png"),
                 fit: BoxFit.fill,
               ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Delivery menu item
-  Widget menuItem(double categories, items) {
-    return Container(
-      width: 310,
-      margin: const EdgeInsets.only(bottom: 5, right: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: MyColors.myWhite,
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromARGB(255, 204, 204, 204),
-            offset: Offset(1, 2),
-            blurRadius: 2,
-            spreadRadius: 1,
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(20),
-                ),
-                child: Image.asset(
-                  "assets/images/special_meal.png",
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topLeft,
-                  width: double.infinity,
-                  height: 150,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 2,
-                ),
-                margin: const EdgeInsets.only(top: 22),
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color.fromRGBO(135, 78, 194, 1),
-                      Color.fromRGBO(106, 34, 178, 1),
-                    ],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-                ),
-                child: const Text(
-                  "Popular",
-                  style: TextStyle(
-                    color: MyColors.myWhite,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                // name of dish
-                Row(
-                  children: [
-                    Icon(
-                      Icons.adjust,
-                      color: Colors.green[900],
-                      size: 18,
-                    ),
-                    const SizedBox(width: 5),
-                    const Text(
-                      "Panjabi Special Menu",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                const Divider(
-                  height: 0.3,
-                  color: Color.fromARGB(255, 196, 195, 195),
-                ),
-                const SizedBox(height: 5),
-
-                // categories
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '$categories Categories & $items Items',
-                      style: const TextStyle(
-                        color: MyColors.myPurple,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        // Input function here...
-                      },
-                      child: const Text(
-                        "See all",
-                        style: TextStyle(
-                          color: MyColors.myBlack,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                const Divider(
-                  height: 0.3,
-                  color: Color.fromARGB(255, 196, 195, 195),
-                ),
-                const SizedBox(height: 10),
-
-                // price
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Row(
-                          children: [
-                            Text(
-                              "Starts at ",
-                              style: TextStyle(
-                                color: MyColors.myGrey,
-                                fontSize: 12,
-                              ),
-                            ),
-                            Icon(
-                              Icons.currency_rupee_rounded,
-                              color: MyColors.myBlack,
-                              size: 14,
-                            ),
-                            Text(
-                              "299",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 2),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.amber[300],
-                              size: 13,
-                            ),
-                            const Icon(
-                              Icons.currency_rupee_rounded,
-                              color: MyColors.myPurple,
-                              size: 16,
-                            ),
-                            const Text(
-                              "219",
-                              style: TextStyle(
-                                color: MyColors.myPurple,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                              ),
-                            ),
-                            const Text(
-                              " / Person",
-                              style: TextStyle(
-                                color: MyColors.myGrey,
-                                fontSize: 12,
-                              ),
-                            ),
-                            const SizedBox(width: 5),
-                            Icon(
-                              Icons.arrow_downward,
-                              color: Colors.green[900],
-                              size: 16,
-                            ),
-                            Text(
-                              "20%",
-                              style: TextStyle(
-                                color: Colors.green[900],
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 2),
-                        const Row(
-                          children: [
-                            Text(
-                              "with Dynamic Price for ",
-                              style: TextStyle(
-                                color: MyColors.myPurple,
-                                fontSize: 11,
-                              ),
-                            ),
-                            Text(
-                              "100 Guests",
-                              style: TextStyle(
-                                color: MyColors.myBlack,
-                                fontSize: 11,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    const Row(
-                      children: [
-                        Icon(
-                          Icons.person,
-                          color: MyColors.myGrey,
-                          size: 13,
-                        ),
-                        Text(
-                          " 10 - 600",
-                          style: TextStyle(
-                            color: MyColors.myGrey,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ],
             ),
           ),
         ],
